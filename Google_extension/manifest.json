@@ -1,0 +1,28 @@
+{
+  "manifest_version": 3,
+  "name": "Prime_prueba",
+  "version": "1.0.0",
+  "description": "Leer y mostrar la informacion de la primera url de una busqueda",
+  "permissions": [
+    "activeTab",
+    "scripting",
+    "storage"
+  ],
+  "host_permissions": [
+    "*://www.google.com/*",
+    "*://*/*"
+  ],
+  "content_scripts": [
+    {
+      "matches": ["*://www.google.com/search*"],
+      "js": ["content.js"]
+    }
+  ],
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "Contenido del primer resultado"
+  },
+  "background": {
+    "service_worker": "background.js"
+  }
+}

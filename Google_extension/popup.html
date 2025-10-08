@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <style>
+        body {
+            width: 450px;
+            min-height: 350px;
+            padding: 15px;
+            font-family: Arial, sans-serif;
+            margin: 0;
+        }
+        
+        .header {
+            text-align: center;
+            color: #4285f4;
+            margin-bottom: 20px;
+        }
+        
+        .status {
+            padding: 10px;
+            border-radius: 5px;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+        
+        .status.loading {
+            background-color: #fff3cd;
+            color: #856404;
+        }
+        
+        .status.success {
+            background-color: #d1edff;
+            color: #0c5460;
+        }
+        
+        .status.error {
+            background-color: #f8d7da;
+            color: #721c24;
+        }
+        
+        .resultado {
+            border: 1px solid #ddd;
+            padding: 10px;
+            border-radius: 5px;
+            margin-bottom: 10px;
+        }
+        
+        .titulo {
+            font-weight: bold;
+            color: #1a0dab;
+            margin-bottom: 8px;
+        }
+        
+        .url {
+            font-size: 12px;
+            color: #006621;
+            margin-bottom: 10px;
+            word-break: break-all;
+        }
+        
+        .contenido {
+            max-height: 200px;
+            overflow-y: auto;
+            background-color: #f8f9fa;
+            padding: 10px;
+            border-radius: 3px;
+            font-size: 14px;
+            line-height: 1.4;
+        }
+        
+        .stats {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            margin: 10px 0;
+            font-size: 12px;
+        }
+        
+        .stat-item {
+            background: #f0f0f0;
+            padding: 8px;
+            border-radius: 4px;
+            text-align: center;
+        }
+        
+        .stat-label {
+            color: #666;
+            font-weight: bold;
+        }
+        
+        .stat-value {
+            color: #333;
+            font-size: 16px;
+            margin-top: 4px;
+        }
+        
+        .buttons {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            margin-top: 10px;
+        }
+        
+        button {
+            background-color: #4285f4;
+            color: white;
+            border: none;
+            padding: 10px 16px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 13px;
+        }
+        
+        button:hover {
+            background-color: #3367d6;
+        }
+        
+        button:disabled {
+            background-color: #ccc;
+            cursor: not-allowed;
+        }
+        
+        button.secondary {
+            background-color: #34a853;
+        }
+        
+        button.secondary:hover {
+            background-color: #2d8e47;
+        }
+        
+        button.danger {
+            background-color: #ea4335;
+        }
+        
+        button.danger:hover {
+            background-color: #c5221f;
+        }
+        
+        .full-width {
+            grid-column: 1 / -1;
+        }
+        
+        .datos-guardados {
+            background: #e8f5e9;
+            padding: 10px;
+            border-radius: 5px;
+            margin-top: 10px;
+            font-size: 12px;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h3>LEER PRIMER RESULTADO</h3>
+    </div>
+    
+    <div id="status" class="status loading">
+        Buscando el primer resultado...
+    </div>
+    
+    <div id="resultado" style="display: none;">
+        <div class="titulo" id="titulo"></div>
+        <div class="url" id="url"></div>
+        
+        <div class="stats">
+            <div class="stat-item">
+                <div class="stat-label">Caracteres</div>
+                <div class="stat-value" id="caracteres">0</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-label">Palabras</div>
+                <div class="stat-value" id="palabras">0</div>
+            </div>
+        </div>
+        
+        <div class="contenido" id="contenido"></div>
+        
+        <div class="buttons">
+            <button id="guardar" class="secondary">
+                 Guardar Datos
+            </button>
+            <button id="verGuardados">
+                 Ver Guardados
+            </button>
+            <button id="descargar">
+                Descargar TXT
+            </button>
+            <button id="analizar">
+                 Analizar
+            </button>
+        </div>
+    </div>
+    
+    <div class="buttons">
+        <button id="actualizar" class="full-width">
+            Actualizar
+        </button>
+    </div>
+    
+    <div id="datosGuardados" class="datos-guardados" style="display: none;">
+        <strong>Datos:</strong>
+        <div id="infoGuardados"></div>
+    </div>
+    
+    <script src="popup.js"></script>
+</body>
+</html>
