@@ -2,9 +2,25 @@ console.log("Extension funcionando");
 
 function obtenerPrimerResultado(){
 
-    const primerResultado=document.querySelector('h3 a[href]');
-
-    if(primerResultado){
+    const elementos=document.querySelectorAl('h3 a[href]');    
+    
+    Array.from(elementos)
+        .slice(0,50)
+        .filter(elemento=>elemento.href.includes('https'))
+        .map((elemento, indice)=>{
+            const snippet=elemento.closest('.g')?.querySelector('.VwiC3b')||
+                            elemento.closest('.g').querySelector('.s')||
+                            '';
+        
+        return{
+            posicion:indice+1,
+            titulo:elemento.textContent,
+            url:elemento.href,
+            snippet:snippet.textContent || 'descripcion vacia'
+        };
+        })
+        
+    if(elementos){
         const url=primerResultado.href;
         const titulo=primerResultado.textContent;
 
