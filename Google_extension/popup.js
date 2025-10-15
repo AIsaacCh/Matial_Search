@@ -16,6 +16,7 @@ const botonAnalizar = document.getElementById('analizar');
 const datosGuardadosEl = document.getElementById('datosGuardados');
 const infoGuardadosEl = document.getElementById('infoGuardados');
 
+
 // Función para mostrar estado
 function mostrarEstado(tipo, mensaje) {
     statusEl.className = `status ${tipo}`;

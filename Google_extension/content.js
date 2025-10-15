@@ -2,29 +2,26 @@ console.log("Extension funcionando");
 
 function obtenerPrimerResultado(){
 
-    const elementos=document.querySelectorAl('h3 a[href]');    
+    const elementos=document.querySelectorAll('h3 a[href]');    
     
-    Array.from(elementos)
+    const elemento_delimitado=Array.from(elementos)
         .slice(0,50)
         .filter(elemento=>elemento.href.includes('https'))
         .map((elemento, indice)=>{
             const snippet=elemento.closest('.g')?.querySelector('.VwiC3b')||
                             elemento.closest('.g').querySelector('.s')||
                             '';
-        
         return{
             posicion:indice+1,
             titulo:elemento.textContent,
             url:elemento.href,
-            snippet:snippet.textContent || 'descripcion vacia'
-        };
-        })
-        
-    if(elementos){
-        const url=primerResultado.href;
-        const titulo=primerResultado.textContent;
+            snippet:snippet.textContent || 'descripcion vacia'};})
+            
 
-        console.log("Primer resultado encontrado", url, titulo)
+        
+    if(elemento_delimitado){
+
+        console.log("Resultados encontrados")
 
         chrome.runtime.sendMessage({
             action:'primer_resultado',
@@ -37,6 +34,7 @@ function obtenerPrimerResultado(){
         console.log("No funciono")
     }
 }
+
 
 function mostrar(elemento,titulo){
     
